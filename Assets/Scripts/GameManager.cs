@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<Animal> animals = new();
+    private float forwardInput;
+    private int activeAnimal;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +18,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public enum Animal
+    {
+        Dog,
+        Cat,
+        Tiger
     }
 }

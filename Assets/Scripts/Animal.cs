@@ -4,15 +4,13 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
-    protected float jumpMult = 1;
-    protected float walkSpeed;
     private string CreatureName { get; set; }
-    
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,14 +19,14 @@ public abstract class Animal : MonoBehaviour
         
     }
 
-    public void Jump()
+    public void Jump(Vector3 direction)
     {
 
     }
 
-    public void Walk()
+    public void Walk(float walkSpeed, float input)
     {
-
+        transform.Translate(Vector3.forward * Time.deltaTime * walkSpeed * input);
     }
 
     protected void Speak(string voice)
