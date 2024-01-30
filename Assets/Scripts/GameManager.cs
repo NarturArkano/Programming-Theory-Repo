@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         activeAnimal = DataHandler.Instance.getType();
-        Debug.Log("Animal type: " + activeAnimal);
 
         animals[activeAnimal].gameObject.SetActive(true);
     }
@@ -27,13 +26,11 @@ public class GameManager : MonoBehaviour
             animals[activeAnimal].Jump();
         }
 
-        animals[activeAnimal].Walk(forwardInput);
-    }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animals[activeAnimal].Speak();
+        }
 
-    public enum AnimalType
-    {
-        Dog,
-        Cat,
-        Tiger
+        animals[activeAnimal].Walk(forwardInput);
     }
 }
