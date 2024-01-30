@@ -13,21 +13,21 @@ public abstract class Animal : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Jump();
 
     public void Jump(Vector3 direction)
     {
-
+        rb.AddForce(direction, ForceMode.Impulse);
     }
+
+    public abstract void Walk(float input);
 
     public void Walk(float walkSpeed, float input)
     {
         transform.Translate(Vector3.forward * Time.deltaTime * walkSpeed * input);
     }
+
+    public abstract void Speak();
 
     protected void Speak(string voice)
     {

@@ -11,16 +11,26 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        activeAnimal = DataHandler.Instance.getType();
+        Debug.Log("Animal type: " + activeAnimal);
+
+        animals[activeAnimal].gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        forwardInput = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animals[activeAnimal].Jump();
+        }
+
+        animals[activeAnimal].Walk(forwardInput);
     }
 
-    public enum Animal
+    public enum AnimalType
     {
         Dog,
         Cat,
